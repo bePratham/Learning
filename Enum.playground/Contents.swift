@@ -124,3 +124,43 @@ let V1asProp = vehicleAsProperty.car(manufacture: "Tasla", model: "rakte h")
 let V2asProp = vehicleAsProperty.bike(manufacture: "Asla", model: "hum bhi")
 
 print("The vehicle is \(V2asProp.getManufacture) " , terminator: "")
+
+enum FavouriteEmoji: String, CaseIterable{
+    case blush = "😳"
+    case rocket = "🚀"
+    case fire = "🔥"
+    case h = "hell"
+}
+FavouriteEmoji.allCases.map(\.rawValue)
+
+enum Height{
+    case short, medium, long
+    mutating func makeLong(){
+        self = Height.long
+    }
+}
+
+var myHeight  = Height.medium
+myHeight.makeLong()
+myHeight
+
+indirect enum IntOperation {
+    case add(Int, Int)
+    case subtract(Int, Int)
+    case freeHand(IntOperation)
+    
+    func calculateResult(
+        of operation: IntOperation? = nil
+    ) -> Int{
+        switch operation ?? self{
+        case let .add(lhs, rhs):
+            return lhs + rhs
+        case let .subtract(lhs, rhs):
+            return lhs-rhs
+        case let .freeHand(operation):
+            return calculateResult(of: operation)
+        }
+    }
+}
+let freeHand = IntOperation.freeHand(.add(2, 4))
+freeHand.calculateResult()
