@@ -13,4 +13,7 @@
    <FileRef
       location = "group:Opretors.playground">
    </FileRef>
+   <FileRef
+      location = "container:Enum 2.playground">
+   </FileRef>
 </Workspace>
