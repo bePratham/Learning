@@ -84,3 +84,43 @@ func getManufacture(from vehicle: Vehicle) -> String {
 }
 
 print(getManufacture(from: car))
+
+
+
+enum vehicle{
+    case car(manufacture: String, model: String)
+    case bike(manufacture: String, model: String)
+    
+    func getManufacture() -> String {
+        switch self {
+        case .car(let manufacture, let model):
+            return manufacture + " -> " + model
+        case .bike(let manufacture, let model):
+            return manufacture
+        }
+    }
+}
+
+let V1 = vehicle.car(manufacture: "Tasla", model: "rakte h")
+let V2 = vehicle.bike(manufacture: "Asla", model: "hum bhi")
+
+print("The vehicle is \(V2.getManufacture())")
+
+enum vehicleAsProperty{
+    case car(manufacture: String, model: String)
+    case bike(manufacture: String, model: String)
+    
+    var getManufacture:String {
+        switch self {
+        case .car(let manufacture, let model):
+            return manufacture + " -> " + model
+        case .bike(let manufacture, let model):
+            return manufacture
+        }
+    }
+}
+
+let V1asProp = vehicleAsProperty.car(manufacture: "Tasla", model: "rakte h")
+let V2asProp = vehicleAsProperty.bike(manufacture: "Asla", model: "hum bhi")
+
+print("The vehicle is \(V2asProp.getManufacture) " , terminator: "")
